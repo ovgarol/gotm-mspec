@@ -1,0 +1,4 @@
+instances:
+  mspec:
+    long_name: mspec
+    model: gotm/mspec
