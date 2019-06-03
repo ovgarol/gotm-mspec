@@ -32,6 +32,7 @@ module gotm_mspec
     type(type_state_variable_id),dimension(:),allocatable :: id_phy,id_QN,id_Q_P
     type(type_state_variable_id) :: id_D_N,id_D_P,id_N,id_P
     type(type_dependency_id) :: id_Cop !PAR_Forcing
+    type(type_dependency_id) :: id_PAR
     type(type_dependency_id) :: id_DeepWTemp !,id_Temp2
     type(type_horizontal_dependency_id) :: id_pCO2,id_SeaTemp !id_CO2_high
     type(type_dependency_id)	 :: id_cil_h,id_cil_l,id_copepod_l,id_copepod_h
