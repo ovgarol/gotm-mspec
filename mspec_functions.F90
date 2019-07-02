@@ -134,7 +134,7 @@ subroutine f_parsr(self,Phy,Q_N,f_co2,F_T,par,mixl,f_par)
 
   k = self%kbg + sum(Q_N*Phy)*self%k_phyN
   par_w = par/(mixl*k)*(1.0_rk-exp(-1.0_rk*k*mixl)) ! par_w: Average light intensity within mixed layer depth,
-  f_par = 1.0_rk-exp(-(self%a_par*par_w*Q_N)/(self%mumax*f_co2*F_T(1))) !OG
+  f_par = (1.0_rk-exp(-(self%a_par*par_w)/(self%mumax*f_co2*F_T(1))))*exp(-(self%b_par*par_w)/(self%mumax*f_co2*F_T(1)))  !OG
 
   return
 end subroutine f_parsr
@@ -154,7 +154,7 @@ subroutine phy_growth_rate(self,Q_N,Q_P,F_T,F_co2,F_par,P_growth_rate)
   real(rk),dimension(self%phyto_num)::f_nut,r,n,g_N,mu_max,q_Nl,q_Pl
 
   if (self%convert_mu .eqv. .true.) then
-    mu_max = self%mumax*(self%QN_max/(self%QN_max-self%QN_min))*(self%QP_max/(self%QP_max-self%QP_min)) !OG
+    mu_max = self%mumax*(self%QN_max/(self%QN_max-self%QN_min))*(self%QP_max/(self%QP_max-self%QP_min))  !OG
   else
     mu_max = self%mumax !OG
   end if
